@@ -10,8 +10,16 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
     @RequestMapping("/next-page")
     public String nexter(){
         return "next";
     }
 }
+
+// why does it sometimes go to the white error page?
+// valid user and password does not always work...
