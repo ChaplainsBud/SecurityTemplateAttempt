@@ -5,9 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
+//    @RequestMapping("/")
+//    public String index(){
+//        return "index";
+//    }
+
     @RequestMapping("/")
-    public String index(){
-        return "index";
+    public String course(){
+        return "course";
     }
 
     @RequestMapping("/login")
@@ -15,10 +20,27 @@ public class HomeController {
         return "login";
     }
 
-    @RequestMapping("/next-page")
-    public String nexter(){
-        return "next";
+    @RequestMapping("/student")
+        public String student(){
+        return "student";
     }
+
+    @RequestMapping("/teacher")
+    public String teacher(){
+        return "teacher";
+    }
+
+
+
+//    @RequestMapping("/next-page")
+//    public String nexter(){
+//        return "next";
+//    }
+//
+//    @RequestMapping("/admin")
+//    public String admin(){
+//        return "admin";
+//    }
 }
 
 // why does it sometimes go to the white error page?
