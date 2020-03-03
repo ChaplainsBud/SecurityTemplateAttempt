@@ -3,6 +3,10 @@ package com.example.exercisefourohone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
@@ -10,17 +14,33 @@ import java.security.Principal;
 
 @Controller
 public class HomeController {
-//    @RequestMapping("/")
-//    public String index(){
-//        return "index";
-//    }
 
-//    @RequestMapping("/")
-//    public String course(){
-//        return "course";
-//    }
+    @Autowired
+    private UserService userService;
 
-    // 4.05 Persisting Current User Information
+    @GetMapping("/register")
+    public String showRegistrationPage(Model model) {
+        model.addAttribute("user", new User());
+        return "registration";
+    }
+
+    @PostMapping("/register")
+    public String processRegistrationPage(@Valid
+                                          @ModelAttribute("user") User user, BindingResult result,
+                                          Model model){
+        model.addAttribute("user", user);
+        if(result.hasErrors())
+        {
+            return "registration";
+        }
+        else
+        {
+            userService.saveUser(user);
+            model.addAttribute("message", "User Account Created");
+        }
+        return "index";
+    }
+
     @Autowired
     UserRepository userRepository;
 
@@ -29,8 +49,6 @@ public class HomeController {
         model.addAttribute("user", userRepository.findByUsername(username));
         return "secure";
     }
-   // above, Persisting Current User Information
-
 
     @RequestMapping("/")
     public String index(){
@@ -47,35 +65,5 @@ public class HomeController {
         return "secure";
     }
 
-
-//    @RequestMapping("/student")
-//        public String student(){
-//        return "student";
-//    }
-//
-//    @RequestMapping("/teacher")
-//    public String teacher(){
-//        return "teacher";
-//    }
-
-//    @RequestMapping("/error")
-//    public String error(){
-//        return "error";
-//    }
-
-    // REALLY WEIRD: The error template works without the RequestMapping!!!!
-
-
-//    @RequestMapping("/next-page")
-//    public String nexter(){
-//        return "next";
-//    }
-//
-//    @RequestMapping("/admin")
-//    public String admin(){
-//        return "admin";
-//    }
 }
 
-// why does it sometimes go to the white error page?
-// valid user and password does not always work...

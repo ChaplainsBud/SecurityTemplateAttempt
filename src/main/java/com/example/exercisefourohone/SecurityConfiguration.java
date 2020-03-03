@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                     .authorizeRequests()
-                    .antMatchers("/", "/h2-console/**").permitAll()
+                    .antMatchers("/", "/h2-console/**", "/register").permitAll()
                     .antMatchers("/admin")
                     .access("hasAuthority('ADMIN')")
                     .anyRequest().authenticated()
@@ -47,13 +47,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                      http.csrf().disable();
                      http.headers().frameOptions().disable();
-
-//                .antMatchers("/").access("hasAnyAuthority('USER','ADMIN')")
-//
-//                    .antMatchers("/course").access("hasAnyAuthority('USER', 'ADMIN')")
-//                    .antMatchers("/student").access("hasAnyAuthority('USER')")
-//                    .antMatchers("/teacher").access("hasAnyAuthority('ADMIN')")
-
 
     }
 
