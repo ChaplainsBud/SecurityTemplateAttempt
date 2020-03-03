@@ -4,7 +4,6 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.cache.spi.support.CollectionReadOnlyAccess;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.Collection;
 

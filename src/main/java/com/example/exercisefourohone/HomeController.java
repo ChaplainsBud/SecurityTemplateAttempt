@@ -12,9 +12,14 @@ public class HomeController {
 //        return "index";
 //    }
 
+//    @RequestMapping("/")
+//    public String course(){
+//        return "course";
+//    }
+
     @RequestMapping("/")
-    public String course(){
-        return "course";
+    public String index(){
+        return "index";
     }
 
     @RequestMapping("/login")
@@ -22,15 +27,21 @@ public class HomeController {
         return "login";
     }
 
-    @RequestMapping("/student")
-        public String student(){
-        return "student";
+    @RequestMapping("/secure")
+    public String secure(){
+        return "secure";
     }
 
-    @RequestMapping("/teacher")
-    public String teacher(){
-        return "teacher";
-    }
+
+//    @RequestMapping("/student")
+//        public String student(){
+//        return "student";
+//    }
+//
+//    @RequestMapping("/teacher")
+//    public String teacher(){
+//        return "teacher";
+//    }
 
 //    @RequestMapping("/error")
 //    public String error(){
