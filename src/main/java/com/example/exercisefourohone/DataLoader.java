@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 @Component
 public class DataLoader implements CommandLineRunner {
+
     @Autowired
     UserRepository userRepository;
 
