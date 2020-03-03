@@ -3,6 +3,8 @@ package com.example.exercisefourohone;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class HomeController {
 //    @RequestMapping("/")
@@ -30,6 +32,12 @@ public class HomeController {
         return "teacher";
     }
 
+//    @RequestMapping("/error")
+//    public String error(){
+//        return "error";
+//    }
+
+    // REALLY WEIRD: The error template works without the RequestMapping!!!!
 
 
 //    @RequestMapping("/next-page")
