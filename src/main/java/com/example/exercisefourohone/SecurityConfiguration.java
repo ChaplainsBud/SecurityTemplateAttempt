@@ -34,9 +34,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        // include CSS FILES BELOW (WHERE IT SAYS HERE)
+
         http
                     .authorizeRequests()
-                    .antMatchers("/", "/h2-console/**", "/register").permitAll()
+                    .antMatchers("/", "/h2-console/**", "/register").permitAll() // INCLUDE CSS FILES HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     .antMatchers("/admin")
                     .access("hasAuthority('ADMIN')")
                     .anyRequest().authenticated()
