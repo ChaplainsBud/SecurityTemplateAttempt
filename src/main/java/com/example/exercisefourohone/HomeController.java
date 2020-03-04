@@ -27,14 +27,11 @@ public class HomeController {
     @PostMapping("/register")
     public String processRegistrationPage(@Valid
                                           @ModelAttribute("user") User user, BindingResult result,
-                                          Model model){
+                                          Model model) {
         model.addAttribute("user", user);
-        if(result.hasErrors())
-        {
+        if (result.hasErrors()) {
             return "registration";
-        }
-        else
-        {
+        } else {
             userService.saveUser(user);
             model.addAttribute("message", "User Account Created");
         }
@@ -44,26 +41,21 @@ public class HomeController {
     @Autowired
     UserRepository userRepository;
 
-    public String secure(Principal principal, Model model){
+    @RequestMapping("/secure")
+    public String secure(Principal principal, Model model) {
         String username = principal.getName();
         model.addAttribute("user", userRepository.findByUsername(username));
         return "secure";
     }
 
     @RequestMapping("/")
-    public String index(){
+    public String index() {
         return "index";
     }
 
     @RequestMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
-    @RequestMapping("/secure")
-    public String secure(){
-        return "secure";
-    }
-
 }
-
