@@ -16,7 +16,7 @@
     th:field="*{firstName}" /><br />
 
     Last Name <mark><strong>
-    <span th:if="${#fields.hasErrors('lasttName')}"
+    <span th:if="${#fields.hasErrors('lastName')}"
           th:errors="*{lastName}">Last Name Error</span>
 </strong></mark>
     <input type="text" id="lastName" placeholder="Last Name"
